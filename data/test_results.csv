@@ -1,0 +1,29 @@
+measurement_id,report_id,product,parameter,value,unit,test_date,note
+M-001,TR-2026-031,OV-600B,cavity_temp_deviation,7.8,K,2026-03-12,
+M-002,TR-2026-031,OV-600P,cavity_temp_deviation,8.4,K,2026-03-12,
+M-003,TR-2026-031,OV-600S,cavity_temp_deviation,11.2,K,2026-03-12,hot spot rear upper corner
+M-004,TR-2026-031,OV-600B,preheat_time_200c,6.9,min,2026-03-12,
+M-005,TR-2026-031,OV-600P,preheat_time_200c,7.1,min,2026-03-12,
+M-006,TR-2026-031,OV-600S,preheat_time_200c,8.1,min,2026-03-12,
+M-007,TR-2026-034,OV-600B,energy_conventional,0.98,kWh,2026-03-26,
+M-008,TR-2026-034,OV-600P,energy_conventional,1.01,kWh,2026-03-26,
+M-009,TR-2026-034,OV-600S,energy_conventional,1.04,kWh,2026-03-26,
+M-010,TR-2026-034,OV-600B,energy_fan_forced,0.79,kWh,2026-03-26,
+M-011,TR-2026-034,OV-600P,energy_fan_forced,0.82,kWh,2026-03-26,
+M-012,TR-2026-034,OV-600S,energy_fan_forced,0.88,kWh,2026-03-26,
+M-013,TR-2026-040,OV-600B,fan_noise,50.9,dB(A),2026-04-15,
+M-014,TR-2026-040,OV-600P,fan_noise,54.1,dB(A),2026-04-15,tonal component at 216 Hz
+M-015,TR-2026-040,OV-600S,fan_noise,51.6,dB(A),2026-04-15,
+M-016,TR-2026-052,OV-600B,door_temp_rise,38.5,K,2026-05-06,
+M-017,TR-2026-052,OV-600P,door_temp_rise,41.0,K,2026-05-06,
+M-018,TR-2026-052,OV-600S,door_temp_rise,39.7,K,2026-05-06,
+M-019,TR-2026-052,OV-600P,door_temp_rise_pyrolysis,63.4,K,2026-05-06,hot spot upper centre of outer glass
+M-020,TR-2026-047,OV-600B,fan_noise,49.8,dB(A),2026-06-03,after ECR-0117
+M-021,TR-2026-047,OV-600P,fan_noise,51.2,dB(A),2026-06-03,after ECR-0117
+M-022,TR-2026-058,OV-600S,descale_cycles,120,cycles,2026-06-18,water hardness 3.5 mmol/l
+M-023,TR-2026-061,OV-600B,hinge_cycles,30000,cycles,2026-07-09,no failure
+M-024,TR-2026-061,OV-600P,hinge_cycles,30000,cycles,2026-07-09,no failure
+M-025,TR-2026-061,OV-600S,hinge_cycles,26500,cycles,2026-07-09,hinge spring fracture
+M-026,TR-2026-066,OV-600S,cavity_temp_deviation,9.1,K,2026-08-20,after ECR-0121
+M-027,TR-2026-066,OV-600S,preheat_time_200c,7.6,min,2026-08-20,after ECR-0121
+M-028,TR-2026-066,OV-600S,energy_fan_forced,0.84,kWh,2026-08-20,after ECR-0121

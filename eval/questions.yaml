@@ -1,0 +1,261 @@
+# Evaluation set for the R&D knowledge agent.
+#
+# Fields
+#   expected_tools  list of groups; the agent must call at least one tool from every group
+#   oracle          the tool calls an expert would make; used by the model-free tool-layer check
+#   facts           each entry must appear in the answer; a nested list means "any of these"
+#   oracle_facts    optional override of facts for the tool-layer check
+#   must_cite       list of groups; the answer must cite at least one id from every group
+#   answerable      false = the correct answer is a refusal
+
+questions:
+  - id: q01
+    category: lookup
+    question: What is the fan noise limit for the OV-600 platform and how is it measured?
+    expected_tools: [[search_documents, get_document, check_spec]]
+    oracle: [{tool: search_documents, args: {query: fan noise limit measured}}]
+    facts: ["52.0", ["1 m", "1 metre", "1 meter"]]
+    must_cite: [[SPEC-OV600-001]]
+
+  - id: q02
+    category: compliance
+    question: Does the OV-600P currently meet the fan noise requirement?
+    expected_tools: [[check_spec, compliance_summary]]
+    oracle: [{tool: check_spec, args: {product: OV-600P, parameter: fan_noise}}]
+    facts: ["51.2", "52.0"]
+    must_cite: [[TR-2026-047]]
+
+  - id: q03
+    category: multi_hop
+    question: What caused the original fan noise failure on the OV-600P and what fixed it?
+    expected_tools: [[search_documents, get_document]]
+    oracle: [{tool: search_documents, args: {query: OV-600P fan noise tone 216 Hz blade-pass fix}}]
+    facts: ["216", "ECR-0117", ["9-blade", "9 blade", "nine-blade", "nine blade", "unequal"]]
+    must_cite: [[TR-2026-040, ECR-0117]]
+
+  - id: q04
+    category: measurement
+    question: What fan-forced energy consumption was measured on the OV-600S before and after the fan baffle change?
+    expected_tools: [[query_test_results, check_spec]]
+    oracle: [{tool: query_test_results, args: {product: OV-600S, parameter: energy_fan_forced}}]
+    facts: ["0.88", "0.84"]
+    must_cite: [[TR-2026-034], [TR-2026-066]]
+
+  - id: q05
+    category: compliance
+    question: Which OV-600S requirements are still not met?
+    expected_tools: [[compliance_summary, check_spec]]
+    oracle: [{tool: compliance_summary, args: {product: OV-600S}}]
+    facts: [["preheat"], "7.6", ["hinge"], "26500", ["descal"], "120"]
+    must_cite: [[TR-2026-066], [TR-2026-061], [TR-2026-058]]
+
+  - id: q06
+    category: change
+    question: What is the status of ECR-0123?
+    expected_tools: [[get_document, list_change_requests, search_documents]]
+    oracle: [{tool: get_document, args: {doc_id: ECR-0123}}]
+    facts: [["open"], ["q4 2026"]]
+    must_cite: [[ECR-0123]]
+
+  - id: q07
+    category: change
+    question: Which change requests are still open or in review?
+    expected_tools: [[list_change_requests]]
+    oracle: [{tool: list_change_requests, args: {}}]
+    facts: ["ECR-0123", "ECR-0125"]
+    must_cite: [[ECR-0123], [ECR-0125]]
+
+  - id: q08
+    category: measurement
+    question: How many hinge cycles did the OV-600S reach and why did it fail?
+    expected_tools: [[query_test_results, check_spec, search_documents, get_document, compliance_summary]]
+    oracle:
+      - {tool: query_test_results, args: {product: OV-600S, parameter: hinge_cycles}}
+      - {tool: get_document, args: {doc_id: TR-2026-061}}
+    facts: ["26500", ["spring"]]
+    must_cite: [[TR-2026-061]]
+
+  - id: q09
+    category: lookup
+    question: What does the specification require for the steam generator?
+    expected_tools: [[search_documents, get_document]]
+    oracle: [{tool: search_documents, args: {query: steam generator requirement descaling}}]
+    facts: ["150", "3.5"]
+    must_cite: [[SPEC-OV600-001]]
+
+  - id: q10
+    category: multi_hop
+    question: Based on the simulation, would the ECR-0125 coating bring the OV-600P pyrolysis door temperature within the limit?
+    expected_tools: [[check_spec, query_test_results, search_documents], [get_document, search_documents]]
+    oracle:
+      - {tool: check_spec, args: {product: OV-600P, parameter: door_temp_rise_pyrolysis}}
+      - {tool: get_document, args: {doc_id: ECR-0125}}
+    facts: ["63.4", "60.0", ["5 to 7", "5-7", "5–7"]]
+    must_cite: [[TR-2026-052], [ECR-0125]]
+
+  - id: q11
+    category: lookup
+    question: When is the platform release gate now?
+    expected_tools: [[search_documents, get_document]]
+    oracle: [{tool: search_documents, args: {query: platform release gate date}}]
+    facts: [["2026-11-30", "30 november 2026", "november 30, 2026", "30.11.2026"]]
+    must_cite: [[MEET-2026-09-10]]
+
+  - id: q12
+    category: lookup
+    question: What did the team decide about the OV-600S preheat time?
+    expected_tools: [[search_documents, get_document]]
+    oracle: [{tool: search_documents, args: {query: OV-600S preheat time deviation decisions platform review}}]
+    facts: [["deviation"], "7.7"]
+    must_cite: [[MEET-2026-09-10]]
+
+  - id: q13
+    category: lookup
+    question: Did we see the fan tone problem on a previous platform, and what was recommended?
+    expected_tools: [[search_documents, get_document]]
+    oracle: [{tool: search_documents, args: {query: fan tone previous platform lessons learned}}]
+    facts: ["OV-500", ["unequal"]]
+    must_cite: [[LL-2025-009]]
+
+  - id: q14
+    category: measurement
+    question: List all fan noise measurements for the OV-600B.
+    expected_tools: [[query_test_results, check_spec]]
+    oracle: [{tool: query_test_results, args: {product: OV-600B, parameter: fan_noise}}]
+    facts: ["50.9", "49.8"]
+    must_cite: [[TR-2026-040], [TR-2026-047]]
+
+  - id: q15
+    category: compliance
+    question: Does the OV-600B meet all of its requirements?
+    expected_tools: [[compliance_summary, check_spec]]
+    oracle: [{tool: compliance_summary, args: {product: OV-600B}}]
+    facts: [["7 of 7", "all 7", "all seven", "all requirements", "all of its requirements", "meets all", "passes all"]]
+    oracle_facts: ["7 of 7"]
+    must_cite: [[TR-2026-031, TR-2026-034, TR-2026-047, TR-2026-052, TR-2026-061, MEET-2026-09-10, SPEC-OV600-001]]
+
+  - id: q16
+    category: measurement
+    question: What was the energy consumption in conventional mode for each variant?
+    expected_tools: [[query_test_results, compliance_summary, check_spec, search_documents]]
+    oracle: [{tool: query_test_results, args: {parameter: energy_conventional}}]
+    facts: ["0.98", "1.01", "1.04"]
+    must_cite: [[TR-2026-034]]
+
+  - id: q17
+    category: change
+    question: How much did ECR-0117 cost?
+    expected_tools: [[get_document, search_documents]]
+    oracle: [{tool: get_document, args: {doc_id: ECR-0117}}]
+    facts: ["18000", "0.12"]
+    must_cite: [[ECR-0117]]
+
+  - id: q18
+    category: multi_hop
+    question: Which variants use the new 9-blade fan, and does the OV-600S use it?
+    expected_tools: [[get_document, search_documents, list_change_requests]]
+    oracle: [{tool: get_document, args: {doc_id: ECR-0117}}]
+    facts: ["OV-600B", "OV-600P", ["own fan", "does not", "doesn't", "not use", "no,", "no."]]
+    oracle_facts: ["OV-600B", "OV-600P", "own fan"]
+    must_cite: [[ECR-0117]]
+
+  - id: q19
+    category: compliance
+    question: By how much does the OV-600S miss the preheat time requirement?
+    expected_tools: [[check_spec, compliance_summary]]
+    oracle: [{tool: check_spec, args: {product: OV-600S, parameter: preheat_time_200c}}]
+    facts: ["7.6", "7.5", "0.1"]
+    must_cite: [[TR-2026-066]]
+
+  - id: q20
+    category: lookup
+    question: Who owns the hinge durability retest and when is it due?
+    expected_tools: [[search_documents, get_document]]
+    oracle: [{tool: search_documents, args: {query: hinge durability retest owner due action item}}]
+    facts: [["mechanics"], ["2026-10-24", "24 october", "october 24", "24.10.2026"]]
+    must_cite: [[MEET-2026-09-10]]
+
+  - id: q21
+    category: lookup
+    question: Why does the OV-600S fail the descaling requirement?
+    expected_tools: [[search_documents, get_document, check_spec, query_test_results]]
+    oracle: [{tool: get_document, args: {doc_id: TR-2026-058}}]
+    facts: ["120", "200", ["fixed"]]
+    must_cite: [[TR-2026-058]]
+
+  - id: q22
+    category: measurement
+    question: What temperature uniformity was measured on each variant?
+    expected_tools: [[query_test_results, check_spec, compliance_summary]]
+    oracle: [{tool: query_test_results, args: {parameter: cavity_temp_deviation}}]
+    facts: ["7.8", "8.4", ["11.2", "9.1"]]
+    must_cite: [[TR-2026-031]]
+
+  - id: q23
+    category: multi_hop
+    question: What still has to happen before the OV-600P can pass the release gate?
+    expected_tools: [[search_documents, get_document, compliance_summary, check_spec]]
+    oracle: [{tool: search_documents, args: {query: OV-600P release gate open door temperature pyrolysis}}]
+    facts: ["ECR-0125", ["door", "pyrolysis"]]
+    must_cite: [[MEET-2026-09-10, ECR-0125, TR-2026-052]]
+
+  - id: q24
+    category: change
+    question: List the change requests for the OV-600S with their status.
+    expected_tools: [[list_change_requests]]
+    oracle: [{tool: list_change_requests, args: {product: OV-600S}}]
+    facts: ["ECR-0121", "ECR-0123", "ECR-0126"]
+    must_cite: [[ECR-0121], [ECR-0123], [ECR-0126]]
+
+  - id: q25
+    category: lookup
+    question: What water hardness should steam generators be tested at, according to past lessons learned?
+    expected_tools: [[search_documents, get_document]]
+    oracle: [{tool: search_documents, args: {query: water hardness steam generator test lessons learned}}]
+    facts: ["3.5"]
+    must_cite: [[LL-2025-014, SPEC-OV600-001, TR-2026-058]]
+
+  - id: q26
+    category: compliance
+    question: Does any variant exceed the door temperature limit in normal operation?
+    expected_tools: [[check_spec, compliance_summary, query_test_results]]
+    oracle: [{tool: query_test_results, args: {parameter: door_temp_rise}}]
+    facts: ["45.0", ["no", "none", "all variants", "all three", "within"]]
+    oracle_facts: ["38.5", "41.0", "39.7"]
+    must_cite: [[TR-2026-052]]
+
+  - id: q27
+    category: unanswerable
+    answerable: false
+    question: What fan noise was measured on the OV-700?
+    expected_tools: []
+    oracle: [{tool: query_test_results, args: {product: OV-700, parameter: fan_noise}}]
+    facts: []
+    must_cite: []
+
+  - id: q28
+    category: unanswerable
+    answerable: false
+    question: What is the energy consumption of the OV-600P in steam mode?
+    expected_tools: []
+    oracle: [{tool: query_test_results, args: {product: OV-600P, parameter: energy_steam}}]
+    facts: []
+    must_cite: []
+
+  - id: q29
+    category: unanswerable
+    answerable: false
+    question: Which company supplies the door glass coating for ECR-0125?
+    expected_tools: []
+    oracle: []
+    facts: []
+    must_cite: []
+
+  - id: q30
+    category: unanswerable
+    answerable: false
+    question: What was the result of the EMC test on the OV-600S?
+    expected_tools: []
+    oracle: [{tool: query_test_results, args: {product: OV-600S, parameter: emc}}]
+    facts: []
+    must_cite: []

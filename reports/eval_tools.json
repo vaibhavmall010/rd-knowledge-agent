@@ -1,0 +1,258 @@
+{
+  "model": null,
+  "created": "2026-10-25 18:34",
+  "results": [
+    {
+      "mode": "tools",
+      "summary": {
+        "questions": 30,
+        "oracle_ok": 30,
+        "fact_coverage": 1.0,
+        "source_coverage": 1.0,
+        "bm25_recall_at_5": 0.821
+      },
+      "rows": [
+        {
+          "id": "q01",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q02",
+          "category": "compliance",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q03",
+          "category": "multi_hop",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 0.0,
+          "ok": true
+        },
+        {
+          "id": "q04",
+          "category": "measurement",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q05",
+          "category": "compliance",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 0.667,
+          "ok": true
+        },
+        {
+          "id": "q06",
+          "category": "change",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q07",
+          "category": "change",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 0.5,
+          "ok": true
+        },
+        {
+          "id": "q08",
+          "category": "measurement",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q09",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q10",
+          "category": "multi_hop",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q11",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q12",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 0.0,
+          "ok": true
+        },
+        {
+          "id": "q13",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q14",
+          "category": "measurement",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 0.5,
+          "ok": true
+        },
+        {
+          "id": "q15",
+          "category": "compliance",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q16",
+          "category": "measurement",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q17",
+          "category": "change",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q18",
+          "category": "multi_hop",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q19",
+          "category": "compliance",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q20",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q21",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 0.0,
+          "ok": true
+        },
+        {
+          "id": "q22",
+          "category": "measurement",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q23",
+          "category": "multi_hop",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q24",
+          "category": "change",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 0.667,
+          "ok": true
+        },
+        {
+          "id": "q25",
+          "category": "lookup",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q26",
+          "category": "compliance",
+          "fact_coverage": 1.0,
+          "source_coverage": 1.0,
+          "bm25_recall_at_5": 1.0,
+          "ok": true
+        },
+        {
+          "id": "q27",
+          "category": "unanswerable",
+          "ok": true,
+          "fact_coverage": null,
+          "source_coverage": null,
+          "bm25_recall_at_5": null
+        },
+        {
+          "id": "q28",
+          "category": "unanswerable",
+          "ok": true,
+          "fact_coverage": null,
+          "source_coverage": null,
+          "bm25_recall_at_5": null
+        },
+        {
+          "id": "q29",
+          "category": "unanswerable",
+          "ok": true,
+          "fact_coverage": null,
+          "source_coverage": null,
+          "bm25_recall_at_5": null
+        },
+        {
+          "id": "q30",
+          "category": "unanswerable",
+          "ok": true,
+          "fact_coverage": null,
+          "source_coverage": null,
+          "bm25_recall_at_5": null
+        }
+      ]
+    }
+  ]
+}
